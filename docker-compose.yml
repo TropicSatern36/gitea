@@ -13,7 +13,7 @@ services:
         networks:
             - core_net
         healthcheck:
-            test: ["CMD", "curl", "-fSs", "http://127.0.0"]
+            test: ["CMD", "curl", "-fSs", "http://127.0.0.1:3000"]
             interval: 60s
             timeout: 10s
             retries: 20
