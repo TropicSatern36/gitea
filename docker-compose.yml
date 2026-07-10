@@ -1,5 +1,5 @@
 services:
-    postgres:
+    gitea:
         image: docker.gitea.com/gitea:1.26.4
         environment:
             - USER_UID=${PUID}
