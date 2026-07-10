@@ -6,7 +6,7 @@ services:
             - USER_GID=${PGID}
             - TZ=${TZ}
         ports:
-            - ${POSTGRES_PORT}:${POSTGRES_PORT}
+            - ${GITEA_SSH_PORT}:22
         volumes:
             - ${APPDATA}/gitea:/data
             - /etc/localtime:/etc/localtime:ro
