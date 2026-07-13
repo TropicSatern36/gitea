@@ -9,13 +9,13 @@ skip_clone: true
 steps:
   apprise-alert:
     image: curlimages/curl:latest
-    secrets: [ apprise_url ]
+    environment:
+      APPRISE_ENDPOINT_URL:
+        from_secret: apprise_url
     commands:
       - |
-        # Format the notification body text
         MSG="Pipeline #$CI_PIPELINE_NUMBER status is $CI_PIPELINE_STATUS for $CI_REPO"
         
-        # Send payload to the injected secret URL variable
         curl -X POST "$APPRISE_ENDPOINT_URL" \
           -H "Content-Type: application/json" \
           -d "{
@@ -25,3 +25,4 @@ steps:
           }"
     when:
       status: [ success, failure ]
+
