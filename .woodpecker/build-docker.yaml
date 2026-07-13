@@ -9,6 +9,7 @@ skip_clone: true
 steps:
   apprise-alert:
     image: curlimages/curl:latest
+    directory: /tmp
     environment:
       APPRISE_ENDPOINT_URL:
         from_secret: apprise_url
