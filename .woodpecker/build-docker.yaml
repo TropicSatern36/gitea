@@ -15,13 +15,11 @@ steps:
         from_secret: apprise_url
     commands:
       - |
-        MSG="Pipeline #$CI_PIPELINE_NUMBER status is $CI_PIPELINE_STATUS for $CI_REPO"
-        
         curl -X POST "$APPRISE_ENDPOINT_URL" \
           -H "Content-Type: application/json" \
           -d "{
             \"title\": \"Woodpecker CI Build Alert\",
-            \"body\": \"$MSG\",
+            \"body\": \"Pipeline #$CI_PIPELINE_NUMBER status is $CI_PIPELINE_STATUS for $CI_REPO\",
             \"type\": \"$CI_PIPELINE_STATUS\"
           }"
     when:
